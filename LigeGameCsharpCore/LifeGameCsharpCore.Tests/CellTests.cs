@@ -3,7 +3,7 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 namespace LifeGameCsharpCore.Tests
 {
     [TestClass]
-    public class UnitTest1
+    public class CellTests
     {
         [TestMethod]
         public void TestMethod1()
