@@ -6,6 +6,9 @@ namespace LifeGameCsharpCore
     {
         static void Main(string[] args)
         {
+            var world = new World(3,3);
+            world.SetCells();
+
 
         }
     }
