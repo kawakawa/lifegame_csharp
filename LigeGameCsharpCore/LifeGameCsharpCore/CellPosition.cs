@@ -1,27 +1,29 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Runtime.CompilerServices;
 using System.Text;
 
 namespace LifeGameCsharpCore
 {
     public class CellPosition
     {
-        private readonly int _x;
-        private readonly int _y;
+        public int X { get; private set; }
+        public  int Y { get; private set; }
 
-        private Cell _cell;
+        public Cell Cell { get; private set; }
 
-        public CellPosition(int x, int y)
+
+        public CellPosition(int x, int y,Cell cell=null)
         {
-            _x = x;
-            _y = y;
-
+            X = x;
+            Y = y;
+            Cell = cell;
         }
 
 
         public void SetCell(Cell cell)
         {
-            _cell = cell;
+            Cell = cell;
         }
 
 

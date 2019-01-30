@@ -16,6 +16,12 @@ namespace LifeGameCsharpCore
         }
 
 
+        public void SetLifeCellCount(int lifeCellCount)
+        {
+            SetLifeCellCountWith(lifeCellCount);
+        }
+
+
         public Cell SetLifeCellCountWith(int lifeCellCount)
         {
             _lifeCellCount = lifeCellCount;

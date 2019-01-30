@@ -10,6 +10,12 @@ namespace LifeGameCsharpCore
             world.SetCells();
 
 
+            while (true)
+            {
+                world.NextGeneration();
+                //View(world);
+            }
+
         }
     }
 }
