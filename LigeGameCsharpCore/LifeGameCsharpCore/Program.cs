@@ -6,14 +6,21 @@ namespace LifeGameCsharpCore
     {
         static void Main(string[] args)
         {
-            var world = new World(3,3);
+            var world = new World(30,30);
             world.SetCells();
 
 
             while (true)
             {
                 world.NextGeneration();
-                //View(world);
+                ViewCell.Print(world.Cells);
+
+                Console.WriteLine();
+                Console.WriteLine();
+                Console.WriteLine("------------------------------------------------------");
+                Console.WriteLine();
+                Console.WriteLine();
+
             }
 
         }

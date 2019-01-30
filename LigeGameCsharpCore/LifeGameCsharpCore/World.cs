@@ -11,7 +11,7 @@ namespace LifeGameCsharpCore
         private readonly int _row;
         private readonly int _column;
 
-        private List<CellPosition> _cells;
+        public List<CellPosition> Cells { get; private set; }
 
         public World(int row, int column)
         {
@@ -30,7 +30,7 @@ namespace LifeGameCsharpCore
 
         public void SetCells()
         {
-            _cells = new List<CellPosition>();
+            Cells = new List<CellPosition>();
 
             for (int x = 0; x < _row; x++)
             {
@@ -38,7 +38,7 @@ namespace LifeGameCsharpCore
                 {
                     var cellPosition = new CellPosition(x, y);
                     cellPosition.SetCell(Utl.Utl.GeneratorCellByRandom());
-                    _cells.Add(cellPosition);
+                    Cells.Add(cellPosition);
                 }
             }
             
@@ -57,10 +57,10 @@ namespace LifeGameCsharpCore
                    var lifeCellCount = GetLifeCellCount(x, y);
 
                    //対象cellに生存cell数を登録
-                   _cells.FirstOrDefault(n => n.X == x && n.Y == y)?.Cell.SetLifeCellCount(lifeCellCount);
+                   Cells.FirstOrDefault(n => n.X == x && n.Y == y)?.Cell.SetLifeCellCount(lifeCellCount);
 
                     //新Cellを登録
-                    var newCell = _cells.FirstOrDefault(n => n.X == x && n.Y == y)?.Cell.GetNextGenerationCell();
+                    var newCell = Cells.FirstOrDefault(n => n.X == x && n.Y == y)?.Cell.GetNextGenerationCell();
                     newCells.Add(new CellPosition(x,y,newCell));
                 }
            }
@@ -69,7 +69,7 @@ namespace LifeGameCsharpCore
 
 
             //cellを世代交代
-            _cells = newCells;
+            Cells = newCells;
 
         }
 
@@ -78,39 +78,39 @@ namespace LifeGameCsharpCore
             var lifeCellCount = 0;
 
             //左上
-            if (_cells.FirstOrDefault(n => n.X == x - 1 && n.Y == y - 1)?.Cell?.IsLife()==true)
+            if (Cells.FirstOrDefault(n => n.X == x - 1 && n.Y == y - 1)?.Cell?.IsLife()==true)
                     lifeCellCount++;
 
             //上
-            if (_cells.FirstOrDefault(n => n.X == x  && n.Y == y - 1)?.Cell?.IsLife() == true)
+            if (Cells.FirstOrDefault(n => n.X == x  && n.Y == y - 1)?.Cell?.IsLife() == true)
                 lifeCellCount++;
 
             //右上
-            if (_cells.FirstOrDefault(n => n.X == x + 1 && n.Y == y - 1)?.Cell?.IsLife() == true)
+            if (Cells.FirstOrDefault(n => n.X == x + 1 && n.Y == y - 1)?.Cell?.IsLife() == true)
                 lifeCellCount++;
 
 
             //左
-            if (_cells.FirstOrDefault(n => n.X == x - 1 && n.Y == y)?.Cell?.IsLife() == true)
+            if (Cells.FirstOrDefault(n => n.X == x - 1 && n.Y == y)?.Cell?.IsLife() == true)
                 lifeCellCount++;
 
             //右
-            if (_cells.FirstOrDefault(n => n.X == x + 1 && n.Y == y)?.Cell?.IsLife() == true)
+            if (Cells.FirstOrDefault(n => n.X == x + 1 && n.Y == y)?.Cell?.IsLife() == true)
                 lifeCellCount++;
 
 
 
 
             //左下
-            if (_cells.FirstOrDefault(n => n.X == x - 1 && n.Y == y + 1)?.Cell?.IsLife() == true)
+            if (Cells.FirstOrDefault(n => n.X == x - 1 && n.Y == y + 1)?.Cell?.IsLife() == true)
                 lifeCellCount++;
 
             //下
-            if (_cells.FirstOrDefault(n => n.X == x && n.Y == y + 1)?.Cell?.IsLife() == true)
+            if (Cells.FirstOrDefault(n => n.X == x && n.Y == y + 1)?.Cell?.IsLife() == true)
                 lifeCellCount++;
 
             //右下
-            if (_cells.FirstOrDefault(n => n.X == x + 1 && n.Y == y + 1)?.Cell?.IsLife() == true)
+            if (Cells.FirstOrDefault(n => n.X == x + 1 && n.Y == y + 1)?.Cell?.IsLife() == true)
                 lifeCellCount++;
 
             
