@@ -13,7 +13,6 @@ namespace LifeGameCsharpCore.Tests
                                 .SetLifeCellCountWith(3)
                                 .GetNextGenerationCell();
             Assert.IsTrue(target.IsLife());
-
         }
 
 
@@ -79,6 +78,24 @@ namespace LifeGameCsharpCore.Tests
                 .GetNextGenerationCell();
 
             Assert.IsFalse(target.IsLife());
+        }
+
+        [TestMethod]
+        public void 死亡_死んでいるセルに隣接する生きたセルが3マス以外の場合セルは死んだままとなる()
+        {
+
+            for (int i = 0; i < 9; i++)
+            {
+                if(i==3)
+                    continue;
+                
+                var target = new Cell(LifeStatus.Dead)
+                    .SetLifeCellCountWith(i)
+                    .GetNextGenerationCell();
+
+                Assert.IsFalse(target.IsLife(),"セル数="+i+" の場合Excepriotn発生");
+            }
+
         }
 
 

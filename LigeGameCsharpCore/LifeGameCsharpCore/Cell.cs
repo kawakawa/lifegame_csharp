@@ -24,14 +24,13 @@ namespace LifeGameCsharpCore
 
         public Cell GetNextGenerationCell()
         {
-            if(IsLife() && _lifeCellCount<=1)
-                return new Cell(LifeStatus.Dead);
 
-            if(IsLife()&& _lifeCellCount>=4)
-                return new Cell(LifeStatus.Dead);
+            if (_lifeCellCount == 3
+                ||
+                (IsLife() && _lifeCellCount==2))
+                return new Cell(LifeStatus.Life);
 
-
-            return new Cell(LifeStatus.Life);
+            return new Cell(LifeStatus.Dead);
         }
 
         public bool IsLife()
