@@ -78,39 +78,39 @@ namespace LifeGameCsharpCore
             var lifeCellCount = 0;
 
             //左上
-            if (Cells.FirstOrDefault(n => n.X == x - 1 && n.Y == y - 1)?.Cell?.IsLife()==true)
+            if (GetTargetCell(x-1,y-1)?.IsLife()==true)
                     lifeCellCount++;
 
             //上
-            if (Cells.FirstOrDefault(n => n.X == x  && n.Y == y - 1)?.Cell?.IsLife() == true)
+            if (GetTargetCell(x, y-1)?.IsLife() == true)
                 lifeCellCount++;
 
             //右上
-            if (Cells.FirstOrDefault(n => n.X == x + 1 && n.Y == y - 1)?.Cell?.IsLife() == true)
+            if (GetTargetCell(x+1, y - 1)?.IsLife() == true)
                 lifeCellCount++;
 
 
             //左
-            if (Cells.FirstOrDefault(n => n.X == x - 1 && n.Y == y)?.Cell?.IsLife() == true)
+            if (GetTargetCell(x - 1, y)?.IsLife() == true)
                 lifeCellCount++;
 
             //右
-            if (Cells.FirstOrDefault(n => n.X == x + 1 && n.Y == y)?.Cell?.IsLife() == true)
+            if (GetTargetCell(x + 1, y)?.IsLife() == true)
                 lifeCellCount++;
 
 
 
 
             //左下
-            if (Cells.FirstOrDefault(n => n.X == x - 1 && n.Y == y + 1)?.Cell?.IsLife() == true)
+            if (GetTargetCell(x - 1, y+1)?.IsLife() == true)
                 lifeCellCount++;
 
             //下
-            if (Cells.FirstOrDefault(n => n.X == x && n.Y == y + 1)?.Cell?.IsLife() == true)
+            if (GetTargetCell(x , y + 1)?.IsLife() == true)
                 lifeCellCount++;
 
             //右下
-            if (Cells.FirstOrDefault(n => n.X == x + 1 && n.Y == y + 1)?.Cell?.IsLife() == true)
+            if (GetTargetCell(x + 1, y + 1)?.IsLife() == true)
                 lifeCellCount++;
 
             
@@ -118,5 +118,15 @@ namespace LifeGameCsharpCore
             return lifeCellCount;
 
         }
+
+
+
+
+        private Cell GetTargetCell(int x, int y)
+        {
+            return Cells.FirstOrDefault(n => n.X == x && n.Y == y)?.Cell;
+        }
+
+
     }
 }

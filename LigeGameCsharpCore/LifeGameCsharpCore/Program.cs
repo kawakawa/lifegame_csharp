@@ -22,7 +22,6 @@ namespace LifeGameCsharpCore
                 Console.WriteLine();
 
             }
-
         }
     }
 }
